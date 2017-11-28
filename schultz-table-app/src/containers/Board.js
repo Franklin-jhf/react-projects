@@ -1,15 +1,43 @@
 import React, { Component } from 'react'
 
-import { Square } from "../components/Square";
+import Square from "../components/Square";
 
-export default class Board extends Component {
-  render() {
-    return (
-      <div>
-        <div>
+class Board extends Component {
+    
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
 
-        </div>
-      </div>
-    )
-  }
+    renderSquare = i => {
+        return (
+            <Square val={i} />
+        )
+    }
+    
+
+    render() {
+
+
+        return (
+            <div style={styles.rows}>
+                { idList.map(i => this.renderSquare(i)) }
+            </div>
+        );
+    }
 }
+
+const idList = Array.apply(null, {length: 25}).map(Number.call, Number)
+
+const styles = {
+    rows: {
+        width: '70vw',
+        height: '70vw',
+        display: 'flex',
+        flexWrap: 'wrap',
+        padding: '0'
+    }
+}
+
+
+export default Board;
